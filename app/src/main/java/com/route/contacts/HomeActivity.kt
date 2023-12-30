@@ -36,7 +36,7 @@ class HomeActivity : AppCompatActivity() , ContactsAdapter.onItemCLick {
             recyclerView.adapter = adapter
         }
 
-        //Hello
+
 
     }
 
