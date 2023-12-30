@@ -31,8 +31,6 @@ class HomeActivity : AppCompatActivity() {
 
         saveBtn.setOnClickListener {
             addNewContact()
-            clearAllEditTexts()
-            updateRecyclerView()
         }
     }
 
@@ -42,7 +40,7 @@ class HomeActivity : AppCompatActivity() {
                 .show()
         else if (phoneEt.text.toString().length != 11)
             Toast.makeText(this, "Number should be 11 digit", Toast.LENGTH_SHORT).show()
-        else
+        else {
             contacts.add(
                 ContactsDM(
                     name = nameEt.text.toString(),
@@ -50,6 +48,9 @@ class HomeActivity : AppCompatActivity() {
                     description = descriptionEt.text.toString()
                 )
             )
+            clearAllEditTexts()
+            updateRecyclerView()
+        }
     }
 
     private fun clearAllEditTexts(){
