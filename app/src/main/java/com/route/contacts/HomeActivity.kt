@@ -36,6 +36,7 @@ class HomeActivity : AppCompatActivity() , ContactsAdapter.onItemCLick {
             recyclerView.adapter = adapter
         }
 
+        //Hello
 
     }
 
@@ -64,8 +65,8 @@ class HomeActivity : AppCompatActivity() , ContactsAdapter.onItemCLick {
         startActivity(intent)
     }
 
-//    override fun onClick(contact: ContactsDM) {
-//        startDetailsActivity(contact)
-//    }
+    override fun onClick(contact: ContactsDM) {
+        startDetailsActivity(contact)
+    }
 }
 
