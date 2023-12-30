@@ -31,11 +31,8 @@ class HomeActivity : AppCompatActivity() {
 
         saveBtn.setOnClickListener {
             addNewContact()
-            adapter = ContactsAdapter(contacts)
-            adapter.onItemClick = ContactsAdapter.onItemCLick{contact ->
-                startDetailsActivity(contact)
-            }
-            recyclerView.adapter = adapter
+            clearAllEditTexts()
+            updateRecyclerView()
         }
     }
 
@@ -53,6 +50,20 @@ class HomeActivity : AppCompatActivity() {
                     description = descriptionEt.text.toString()
                 )
             )
+    }
+
+    private fun clearAllEditTexts(){
+        nameEt.setText("")
+        phoneEt.setText("")
+        descriptionEt.setText("")
+    }
+
+    private fun updateRecyclerView(){
+        adapter = ContactsAdapter(contacts)
+        adapter.onItemClick = ContactsAdapter.onItemCLick{contact ->
+            startDetailsActivity(contact)
+        }
+        recyclerView.adapter = adapter
     }
 
     private fun startDetailsActivity(contact: ContactsDM) {
