@@ -8,7 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class HomeActivity : AppCompatActivity() , ContactsAdapter.onItemCLick {
+class HomeActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     var contacts: ArrayList<ContactsDM> = ArrayList()
@@ -18,7 +18,6 @@ class HomeActivity : AppCompatActivity() , ContactsAdapter.onItemCLick {
     lateinit var phoneEt: EditText
     lateinit var descriptionEt: EditText
     lateinit var saveBtn: Button
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,11 +32,11 @@ class HomeActivity : AppCompatActivity() , ContactsAdapter.onItemCLick {
         saveBtn.setOnClickListener {
             addNewContact()
             adapter = ContactsAdapter(contacts)
+            adapter.onItemClick = ContactsAdapter.onItemCLick{contact ->
+                startDetailsActivity(contact)
+            }
             recyclerView.adapter = adapter
         }
-
-
-
     }
 
     private fun addNewContact() {
@@ -54,7 +53,6 @@ class HomeActivity : AppCompatActivity() , ContactsAdapter.onItemCLick {
                     description = descriptionEt.text.toString()
                 )
             )
-
     }
 
     private fun startDetailsActivity(contact: ContactsDM) {
@@ -63,10 +61,6 @@ class HomeActivity : AppCompatActivity() , ContactsAdapter.onItemCLick {
         intent.putExtra("phone", contact.phone)
         intent.putExtra("description", contact.description)
         startActivity(intent)
-    }
-
-    override fun onClick(contact: ContactsDM) {
-        startDetailsActivity(contact)
     }
 }
 

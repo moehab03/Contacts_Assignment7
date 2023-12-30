@@ -18,7 +18,7 @@ class ContactsAdapter(private var contacts: ArrayList<ContactsDM>) : Adapter<Con
         fun onClick(contact: ContactsDM)
     }
 
-    private lateinit var onItemClick : onItemCLick
+    lateinit var onItemClick : onItemCLick
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
